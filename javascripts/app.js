@@ -1,86 +1,100 @@
 // Rover Object Goes Here
 var rover = {
   direction: "N",
-  position: [0,0],
+  positionX: 0,
+  positionY: 0,
   travelLog: []
 }
-// ======================
+var commands = ["f", "l", "r"]
 
 // ======================
+
 function turnLeft(rover){
-  console.log("turnLeft was called!");
-  switch (rover.turn) {
+  console.log("Rover asked to turn left.");
+  switch (rover) {
     case "N":
-      rover.turn = "W"
-      return "Rover facing west.";
+      rover.direction = "W";
+      console.log("Rover is now facing west.");
       break;
     case "S":
-      rover.turn = "E"
-      return "Rover facing east.";
+      rover.direction = "E";
+      console.log("Rover is now facing east.");
       break;
     case "E":
-      rover.turn = "N"
-      return "Rover facing north.";
+      rover.direction = "N";
+      console.log("Rover is now facing north.");
       break;
     case "W":
-      rover.turn = "S"
-      return "Rover facing south.";
+      rover.direction = "S";
+      console.log("Rover is now facing south.");
       break;
   }
 }
+turnLeft()
+
 
 function turnRight(rover){
-  console.log("turnRight was called!");
-  switch (rover.turn) {
+  console.log("Rover asked to turn right.");
+  switch (rover) {
     case "N":
-      rover.turn = "E"
-      return "Rover facing east.";
+      rover.direction = "E";
+      console.log("Rover is now facing east.");
       break;
     case "S":
-      rover.turn = "W"
-      return "Rover facing west.";
+      rover.direction = "W";
+      console.log("Rover is now facing west.");
       break;
     case "E":
-      rover.turn = "S"
-      return "Rover facing south.";
+      rover.direction = "S";
+      console.log("Rover is now facing south.");
       break;
     case "W":
-      rover.turn = "N"
-      return "Rover facing north.";
+      rover.direction = "N";
+      console.log("Rover is now facing north.");
       break;
   }
 }
+turnRight()
+
 
 function moveForward(rover){
-  console.log("moveForward was called")
-  switch (rover.position) {
+  console.log("Rover asked to move forward.")
+  switch (rover) {
     case "N":
-      rover.position = "y-1"
-      console.log("Rover coordinates are [x,y].")
+      rover.positionY = rover.positionY - 1;
+      console.log("Rover coordinates are now [positionX,positionY].");
+      travelLog.push["[positionX,positionY]"];
       break;
     case "S":
-      rover.position = "y+1"
-      console.log("Rover coordinates are [x,y].")
+      rover.positionY = rover.positionY + 1;
+      console.log("Rover coordinates are now [positionX,positionY].");
+      travelLog.push["[positionX,positionY]"];
       break;
     case "E":
-      rover.position = "x+1"
-      console.log("Rover coordinates are [x,y].")
+      rover.positionX = rover.positionX + 1;
+      console.log("Rover coordinates are now [positionX,positionY].");
+      travelLog.push["[positionX,positionY]"];
       break;
     case "W":
-      rover.position = "x-1"
-      console.log("Rover coordinates are [x,y].")
+      rover.positionX = rover.positionX - 1;
+      console.log("Rover coordinates are now [positionX,positionY].");
+      travelLog.push["[positionX,positionY]"];
       break;
   }
 }
+moveForward()
 
-function command() {
-  for (var i=0; i<command.length; i++) {
-  if (command === "f") {
-    moveForward(rover);
-  if (command === "r") {
-    turnRight(rover);
-  if (command === "l") {
-    turnLeft(rover);
-  } else {
-    alert ("Use f, r, or l commands only");}
-  }}}}
+
+  function command(commands) {
+    for (var i = 0; i < commands.length; i++) {
+    if (commands[i] === "f") {
+      moveForward(rover);
+    }else if (commands[i] === "r") {
+      turnRight(rover);
+    }else if (commands[i] === "l") {
+      turnLeft(rover);
+    } else {
+      alert ("Use f, r, or l commands only");}
+    }
+  }
+  command()
