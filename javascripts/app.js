@@ -3,17 +3,17 @@ var rover = {
   direction: "N",
   positionX: 0,
   positionY: 0,
-  travelLog: []
-}
-var commands = ["f", "l", "r"]
+};
+  travelLog = [];
+
 
 // ======================
 
+
 function turnLeft(rover){
-  console.log("Rover asked to turn left.");
-  switch (rover) {
+  switch (rover.direction) {
     case "N":
-      rover.direction = "W";
+    rover.direction = "W";
       console.log("Rover is now facing west.");
       break;
     case "S":
@@ -30,12 +30,10 @@ function turnLeft(rover){
       break;
   }
 }
-turnLeft()
-
+// turnLeft()
 
 function turnRight(rover){
-  console.log("Rover asked to turn right.");
-  switch (rover) {
+  switch (rover.direction) {
     case "N":
       rover.direction = "E";
       console.log("Rover is now facing east.");
@@ -54,47 +52,44 @@ function turnRight(rover){
       break;
   }
 }
-turnRight()
+// turnRight()
 
 
 function moveForward(rover){
-  console.log("Rover asked to move forward.")
-  switch (rover) {
+  switch (rover.direction) {
     case "N":
       rover.positionY = rover.positionY - 1;
-      console.log("Rover coordinates are now [positionX,positionY].");
-      travelLog.push["[positionX,positionY]"];
+      travelLog.push("[ " + rover.positionX + ", " + rover.positionY + " ]");
       break;
     case "S":
       rover.positionY = rover.positionY + 1;
-      console.log("Rover coordinates are now [positionX,positionY].");
-      travelLog.push["[positionX,positionY]"];
+      travelLog.push("[ " + rover.positionX + ", " + rover.positionY + " ]");
       break;
     case "E":
       rover.positionX = rover.positionX + 1;
-      console.log("Rover coordinates are now [positionX,positionY].");
-      travelLog.push["[positionX,positionY]"];
+      travelLog.push("[ " + rover.positionX + ", " + rover.positionY + " ]");
       break;
     case "W":
       rover.positionX = rover.positionX - 1;
-      console.log("Rover coordinates are now [positionX,positionY].");
-      travelLog.push["[positionX,positionY]"];
+      travelLog.push("[ " + rover.positionX + ", " + rover.positionY + " ]");
       break;
   }
+  console.log("Moving forward, Rover coordinates are now [ " + rover.positionX + ", " + rover.positionY + " ]");
 }
-moveForward()
+// moveForward()
 
 
-  function command(commands) {
-    for (var i = 0; i < commands.length; i++) {
-    if (commands[i] === "f") {
-      moveForward(rover);
-    }else if (commands[i] === "r") {
-      turnRight(rover);
-    }else if (commands[i] === "l") {
-      turnLeft(rover);
-    } else {
-      alert ("Use f, r, or l commands only");}
-    }
+function command(commands) {
+  for (var i = 0; i < commands.length; i++) {
+  if (commands[i] === "f") {
+    moveForward(rover);
+  }else if (commands[i] === "r") {
+    turnRight(rover);
+  }else if (commands[i] === "l") {
+    turnLeft(rover);
+  } else {
+    alert ("Use f, r, or l commands only");}
   }
-  command()
+  console.log("Rover movements " + travelLog);
+}
+command()
